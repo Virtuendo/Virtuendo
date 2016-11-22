@@ -3,14 +3,86 @@
 ---
 @charset "utf-8";
 
+$visual-grid: false;
+
 @import "bourbon/bourbon";
 @import "neat/neat";
 
 
 // Our variables
+$color-active-red: #E52342;
+$color-normal-grey: #4D4D4D;
+$color-background-cream: #FDE4B9;
+
+$mobile: new-breakpoint(max-width 768px 4);
+
+// Typography
+body {
+  font-family: 'Libre Baskerville', serif;
+  color: $color-normal-grey;
+}
+
+.mono {
+    font-family: 'Nova Mono', monospace;
+}
 
 
+// Layout
+body {
+  background-color: $color-background-cream;
+}
+a, a:active, a:hover, a:link {
+  color: $color-normal-grey;
+  border-bottom: 1px solid $color-active-red;
+  text-decoration: none;
+}
+a:hover {
+  border-bottom: 2px solid $color-active-red;
+}
 
+
+.page-content {
+  @include outer-container();
+}
+.wrapper {
+}
+
+.banner {
+  @include span-columns(6);
+  @include shift(2);
+  @include media($mobile){
+    @include shift(0);
+    @include span-columns(4);
+  }
+  margin-top: modular-scale(3);
+  padding-bottom: modular-scale(3);
+  //border-bottom: 3px double $color-active-red;
+}
+
+.message {
+  @include span-columns(6);
+  @include shift(3);
+  @include media($mobile){
+    @include shift(1);
+    @include span-columns(3);
+  }
+}
+
+// Components
+.logo {
+  width: 420px;
+  height: auto;
+  @include media($mobile){
+    width: 320px;
+  }
+}
+
+.message {
+  font-size: modular-scale(2);
+  @include media($mobile){
+    font-size: modular-scale(1);
+  }
+}
 
 
 // Import partials from `sass_dir` (defaults to `_sass`)
